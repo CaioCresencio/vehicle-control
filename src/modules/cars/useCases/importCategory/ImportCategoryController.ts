@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CategoriesRepository } from "../../repositories/CategoriesRepository";
+import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
 import { ImportCategoryUseCase } from "./ImportCategoryUseCase";
 
 
@@ -10,7 +10,9 @@ class ImportCategoryController{
     handle( request: Request, response: Response): Response{
         const { file } = request;
         
-        this.importCategoryUseCase.execute(file);
+        if ( file ){
+            this.importCategoryUseCase.execute(file);
+        }   
         return response.send();
     }
 }

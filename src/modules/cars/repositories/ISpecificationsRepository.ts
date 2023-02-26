@@ -2,13 +2,13 @@ import { Specification } from "../model/Specification";
 
 interface ICreateSpecificationDTO{
     name: string;
-    description;
+    description:string;
 }
 
 interface ISpecificationRepository{
     
     create({ description , name }: ICreateSpecificationDTO): void;
-    findByName( name: string ):Specification; 
+    findByName( name: string ):Specification|undefined; 
 }
 
 export { ICreateSpecificationDTO, ISpecificationRepository }
